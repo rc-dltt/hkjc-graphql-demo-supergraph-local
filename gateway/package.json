@@ -4,8 +4,8 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "compose": "npx rover supergraph compose --elv2-license=accept --config ./supergraph.yaml > ./src/supergraph.graphql",
-    "start": "node ./src/index.js"
+    "build": "npx rover supergraph compose --elv2-license=accept --config ./supergraph.yaml > ./src/supergraph.graphql",
+    "start": "npm run build && node ./src/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -7,5 +7,6 @@ COPY package.json ./
 COPY supergraph.yaml ./
 
 RUN npm install
+RUN npm run build
 
 CMD ["./src/index.js"]

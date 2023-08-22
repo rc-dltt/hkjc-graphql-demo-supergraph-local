@@ -7,6 +7,6 @@ COPY package.json ./
 COPY tsconfig.json ./
 
 RUN npm install
-RUN npm run compile
+RUN npm run build
 
 CMD ["./dist/index.js"]

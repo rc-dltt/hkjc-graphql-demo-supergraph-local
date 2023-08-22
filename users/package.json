@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "copy-data": "copyfiles -f ./src/data/*.json ./dist/data",
-    "compile": "tsc && npm run copy-data",
-    "start": "npm run compile && node ./dist/index.js"
+    "build": "tsc && npm run copy-data",
+    "start": "npm run build && node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",
