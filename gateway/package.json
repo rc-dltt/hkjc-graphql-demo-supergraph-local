@@ -5,6 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "npx rover supergraph compose --elv2-license=accept --config ./supergraph.yaml > ./src/supergraph.graphql",
+    "sonar": "sonar-scanner",
     "start": "npm run build && node ./src/index.js"
   },
   "author": "",
@@ -13,5 +14,8 @@
     "@apollo/gateway": "^2.5.1",
     "@apollo/rover": "^0.18.0",
     "apollo-server": "^3.12.0"
+  },
+  "devDependencies": {
+    "sonar-scanner": "^3.1.0"
   }
 }
