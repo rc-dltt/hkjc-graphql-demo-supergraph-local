@@ -2,16 +2,14 @@
 
 Mobile Applications and the BFF Architecture using GraphQL​
 
-## Server
-
-### Diagram
+## Diagram
 
 ![supergraph structure](./supergraph.drawio.png "Subgraphs")
 
 
-### Schema
+## Schema
 
-#### Users
+### Users
 
 ```graphql
 extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@shareable"])
@@ -40,7 +38,7 @@ type User @key(fields: "id") {
 }
 ```
 
-#### Races
+### Races
 
 ```graphql
 extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@shareable"])
@@ -88,7 +86,7 @@ type Horse @key(fields: "id") {
 }
 ```
 
-#### Matches
+### Matches
 
 ```graphql
 extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@shareable"])
@@ -156,7 +154,7 @@ type Player @key(fields: "id") {
 }
 ```
 
-### Auth
+## Auth
 
 Login mutation:
 
@@ -205,7 +203,7 @@ with variables
 Auth token is expected in `x-access-token` header for all operations except `login`
 
 
-### How To
+## How To
 
 From the root folder of the repository
 
@@ -225,4 +223,18 @@ To tear-down the containers:
 
 ```bash
 make server-down
+```
+
+## SonarQube Scan
+
+to run with the default properties in `sonar-project.properties`
+
+```bash
+npm run sonar 
+```
+
+you can override with
+
+```bash
+npm run sonar -- -Dsonar.host.url=http://localhost:9000
 ```
