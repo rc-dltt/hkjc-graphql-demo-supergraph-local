@@ -227,7 +227,44 @@ make server-down
 
 ## SonarQube Scan
 
-to run with the default properties in `sonar-project.properties`
+### setup
+
+For each project in the monorepo, add the sonarqube dev dep
+
+```bash
+npm install sonar-scanner --save-dev
+```
+
+and add the `sonar-project.properties` file as follow
+
+```env
+sonar.host.url=http://sonarqube:9000
+sonar.login=sqa_57636cdd63bd6c713dd7b040d12363b7badbe24d
+sonar.projectKey=hkjc-graphql-demo-supergraph-local_users
+sonar.projectName=hkjc-graphql-demo-supergraph-local_users
+sonar.projectVersion=1.0
+sonar.sourceEncoding=UTF-8
+sonar.sources=src
+sonar.exclusions=node_modules/**, dist/**
+sonar.tests=src
+sonar.test.inclusions=**/*.spec.ts
+sonar.typescript.lcov.reportPaths=coverage/lcov.info
+```
+
+the url is set to work in jenkins, you can override locally or rely on the vs code extension `sonarlint (SonarSource.sonarlint-vscode)`.
+
+Add a npm script in `package.json` to run the scan
+
+```json
+  "scripts": {
+    "sonar": "sonar-scanner",
+    ...
+  }
+```
+
+### run
+
+To run with the default properties in `sonar-project.properties`
 
 ```bash
 npm run sonar 
