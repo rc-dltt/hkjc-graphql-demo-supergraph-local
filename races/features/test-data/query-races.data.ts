@@ -1,5 +1,3 @@
-import { jest } from "@jest/globals";
-
 const USERS = [
   {
     id: "user#1",
@@ -141,11 +139,11 @@ const RACES = [
 ];
 
 export const users = {
-  list: jest.fn(() => USERS),
-  get: jest.fn((id) => USERS.find((x) => x.id === id)),
+  list: () => USERS,
+  get: (id) => USERS.find((x) => x.id === id),
 };
 
 export const races = {
-  list: jest.fn(() => RACES),
-  get: jest.fn((id) => RACES.find((x) => x.id === id)),
+  list: () => RACES,
+  get: (id) => RACES.find((x) => x.id === id),
 };
