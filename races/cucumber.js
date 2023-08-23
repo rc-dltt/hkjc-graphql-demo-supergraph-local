@@ -2,8 +2,8 @@ module.exports = {
   default: {
     parallel: 3,
     format: [
-      "progress-bar",
-      "usage",
+      // "progress",
+      // "usage",
       "json:./.reports/report.json",
       "html:./.reports/report.html",
     ],
