@@ -1,4 +1,12 @@
 {
+    "extends": "ts-node/node16/tsconfig.json",
+    "ts-node": {
+        "transpileOnly": true,
+        "files": true,
+        "compilerOptions": {
+
+        }
+    },
     "compilerOptions": {
         "target": "ESNext",
         "module": "commonjs",
@@ -17,7 +25,7 @@
         ],
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
     ],
     "exclude": [
         "**/*.spec.ts"
