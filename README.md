@@ -225,6 +225,113 @@ To tear-down the containers:
 make server-down
 ```
 
+## Testing with Jest & Cucumber
+
+### setup
+
+Add the required npm packages
+
+```bash
+npm install @cucumber/gherkin @types/jest jest
+npm install --save-dev @tsconfig/node16 babel-jest jest-cucumber ts-jest ts-lint
+```
+
+and then add `jest` configuration to `package.json`
+
+```json
+"jest": {
+  "verbose": true,
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "testMatch": [
+    "**/*.steps.ts"
+  ],
+  "moduleDirectories": [
+    "node_modules"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "ts",
+    "tsx"
+  ]
+}
+```
+
+Finally add jest, lint and test scripts to `package.json`
+
+```json
+"scripts": {
+  "build": "tsc && npm run copy-data",
+  "jest": "jest --verbose",
+  "lint": "tslint --project ./",
+  "test": "npm run build & npm run lint & jest --color",
+  ...
+},
+```
+
+### scenarios
+
+Add a `sample.feature` feature in the `specs/features` folder
+
+```gherkin
+Feature: Sample feature
+  The feature description
+
+  Rule: some sample rule
+
+    Scenario: Feature scenario #1
+      Given A scenario
+      When A condition is verified
+      Then The result is expected
+```
+
+In `specs/step-definitions` create the `sample.steps.ts` file to define yourt actual tests implementing the feature file
+
+```ts
+import { loadFeature, defineFeature } from "jest-cucumber";
+import { expect } from "@jest/globals";
+
+import { myFunction } from "../../src/myFunction";
+
+const feature = loadFeature("./specs/features/query-races.feature");
+
+defineFeature(feature, (test) => {
+  let contextValue: { principal: any; dataSources: any };
+  let actual: any[];
+  let parent: any;
+  let args: { first: Number; after: String };
+
+  test("Feature scenario #1",
+    ({ given, when, then }) => {
+      given("A scenario", () => {
+        args = ...
+      });
+
+      when("A condition is verified", () => {
+        actual = myFunction(args);
+      });
+
+      then("The result is expected", () => {
+        expect(actual).toBe(1);
+      });
+    }
+  );
+```
+
+Run your tests 
+
+```bash
+npm test
+
+> 
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.701 s
+Ran all test suites.
+```
+
 ## SonarQube Scan
 
 ### setup
