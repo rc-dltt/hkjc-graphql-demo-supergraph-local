@@ -133,3 +133,6 @@ dist
 
 # sonarqube
 .scannerwork/
+
+# jest/cucumber
+.reports

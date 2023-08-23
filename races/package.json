@@ -27,7 +27,11 @@
       "js",
       "ts",
       "tsx"
-    ]
+    ],
+    "testResultsProcessor": "jest-json-reporter"
+  },
+  "jestJsonReporter": {
+    "outputFile": "./.reports/test-results.json"
   },
   "author": "",
   "license": "ISC",
@@ -37,6 +41,7 @@
     "@cucumber/gherkin": "^26.2.0",
     "@types/jest": "^29.5.4",
     "copyfiles": "^2.4.1",
+    "cucumber": "^6.0.7",
     "dotenv": "^16.3.1",
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
@@ -49,6 +54,7 @@
     "@types/node": "^20.4.5",
     "babel-jest": "^29.6.3",
     "jest-cucumber": "^3.0.1",
+    "jest-json-reporter": "^1.2.2",
     "sonar-scanner": "^3.1.0",
     "ts-jest": "^29.1.1",
     "ts-lint": "^4.5.1",
