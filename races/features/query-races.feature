@@ -6,12 +6,12 @@ Feature: Query races
 
     Scenario: There are races in the system and the current user is authorized to query the races
       Given There are races in the system
-      When A users queries the races
+      When A user queries the races
       Then The first {int} races should be displayed
 
   Rule: An exception should be thrown when user is unauthorized
 
     Scenario: There are races in the system but the current user is not authorized to query the races
       Given There are races in the system
-      When An unauthorized users queries the races
+      When An unauthorized user queries the races
       Then An exception is thrown
